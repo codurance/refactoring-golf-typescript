@@ -1,6 +1,6 @@
 import {money, Money} from "./money";
 
-export function taxRate(percent: number) {
+export function taxRate(percent: number): TaxRate {
     return TaxRate.taxRate(percent);
 }
 
