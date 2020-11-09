@@ -1,0 +1,31 @@
+{
+  "name": "ts-kata",
+  "version": "1.0.0",
+  "description": "Typescript Kata Seed based on Justin Conklin version",
+  "main": "index.js",
+  "scripts": {
+    "start": "jest --",
+    "watch": "jest --watch --",
+    "watch-all": "jest --watchAll"
+  },
+  "author": "javier.chacana@codurance.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/plugin-proposal-class-properties": "7.4.4",
+    "prettier": "1.17.1",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-typescript": "7.3.3",
+    "@types/jest": "24.0.13",
+    "babel-jest": "24.8.0",
+    "jest": "24.8.0",
+    "typescript": "3.5.1"
+  },
+  "jest": {
+    "verbose": true,
+    "testMatch": [
+      "**/**/*.spec.ts",
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ]
+  }
+}
