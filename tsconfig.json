@@ -1,15 +1,13 @@
 {
     "compilerOptions": {
-        "baseUrl": "./",
-        "module": "es2015",
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "target": "es5",
+        "module": "commonjs",
+        "target": "es6",
         "strict": true,
-        "lib": [
-            "es2017",
-            "dom"
-        ],
-    }
+        "declaration":true,
+        "noImplicitAny": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
 }
