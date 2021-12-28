@@ -35,7 +35,7 @@ export class Takehomecalculator {
         const amount:number = total.first * (this.percent / 100.0 );
         const tax: Pair<number, string> = new Pair(Math.trunc(amount), first.second);
 
-        if (total.second != tax.second) {
+        if (total.second !== tax.second) {
             throw new Incalculable()
         } else {
             return new Pair(total.first - tax.first, first.second)
