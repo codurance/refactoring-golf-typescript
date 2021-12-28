@@ -1,10 +1,10 @@
 import {Incalculable} from "./incalculable";
 
-export class Pair<A, B> {
-    public first: A;
-    public second: B;
+export class Money {
+    public first: number;
+    public second: string;
 
-    constructor(first: A, second: B) {
+    constructor(first: number, second: string) {
         this.first = first;
         this.second = second;
     }
@@ -17,10 +17,10 @@ export class Takehomecalculator {
         this.percent = percent;
     }
 
-    netAmount(first: Pair<number, string>, ...rest : Pair<number, string>[] ): Pair<number, string> {
+    netAmount(first: Money, ...rest : Money[] ): Money {
 
-        const pairs: Array<Pair<number, string>> = Array.from(rest);
-        let total: Pair<number, string> = first
+        const pairs: Array<Money> = Array.from(rest);
+        let total: Money = first
 
         for (let next of pairs) {
             if (next.second !== total.second) {
@@ -29,16 +29,16 @@ export class Takehomecalculator {
         }
 
         for (const next of pairs) {
-            total = new Pair<number, string>(total.first + next.first, next.second)
+            total = new Money(total.first + next.first, next.second)
         }
 
         const amount:number = total.first * (this.percent / 100.0 );
-        const tax: Pair<number, string> = new Pair(Math.trunc(amount), first.second);
+        const tax: Money = new Money(Math.trunc(amount), first.second);
 
         if (total.second !== tax.second) {
             throw new Incalculable()
         } else {
-            return new Pair(total.first - tax.first, first.second)
+            return new Money(total.first - tax.first, first.second)
         }
     }
 
