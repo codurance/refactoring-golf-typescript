@@ -23,7 +23,7 @@ export class Takehomecalculator {
         let total: Pair<number, string> = first
 
         for (let next of pairs) {
-            if (next.second != total.second) {
+            if (next.second !== total.second) {
                 throw new Incalculable()
             }
         }
