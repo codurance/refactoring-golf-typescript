@@ -15,6 +15,13 @@ export class Money {
         }
         return new Money(this.value + other.value, other.currency)
     }
+
+    minus(other: Money): Money {
+        if (this.currency !== other.currency) {
+            throw new Incalculable();
+        }
+        return new Money(this.value - other.value, other.currency);
+    }
 }
 
 export class Takehomecalculator {
@@ -35,10 +42,7 @@ export class Takehomecalculator {
         const amount:number = total.value * (this.percent / 100.0 );
         const tax: Money = new Money(Math.trunc(amount), first.currency);
 
-        if (total.currency !== tax.currency) {
-            throw new Incalculable()
-        }
-        return new Money(total.value - tax.value, first.currency);
+        return total.minus(tax)
     }
 
 }
