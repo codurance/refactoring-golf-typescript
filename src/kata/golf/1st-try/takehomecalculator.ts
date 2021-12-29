@@ -25,7 +25,6 @@ export class Takehomecalculator {
     }
 
     netAmount(first: Money, ...rest : Money[] ): Money {
-
         const monies: Array<Money> = Array.from(rest);
         let total: Money = first
 
@@ -38,9 +37,8 @@ export class Takehomecalculator {
 
         if (total.currency !== tax.currency) {
             throw new Incalculable()
-        } else {
-            return new Money(total.value - tax.value, first.currency)
         }
+        return new Money(total.value - tax.value, first.currency);
     }
 
 }
