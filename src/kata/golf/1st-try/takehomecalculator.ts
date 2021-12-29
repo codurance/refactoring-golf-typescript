@@ -4,9 +4,9 @@ export class Money {
     public value: number;
     public currency: string;
 
-    constructor(first: number, second: string) {
-        this.value = first;
-        this.currency = second;
+    constructor(value: number, currency: string) {
+        this.value = value;
+        this.currency = currency;
     }
 }
 
