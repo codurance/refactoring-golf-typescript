@@ -8,6 +8,13 @@ export class Money {
         this.value = value;
         this.currency = currency;
     }
+
+    plus(other: Money): Money {
+        if (other.currency !== this.currency) {
+            throw new Incalculable()
+        }
+        return new Money(this.value + other.value, other.currency)
+    }
 }
 
 export class Takehomecalculator {
@@ -22,14 +29,8 @@ export class Takehomecalculator {
         const monies: Array<Money> = Array.from(rest);
         let total: Money = first
 
-        for (let next of monies) {
-            if (next.currency !== total.currency) {
-                throw new Incalculable()
-            }
-        }
-
         for (const next of monies) {
-            total = new Money(total.value + next.value, next.currency)
+            total = total.plus(next)
         }
 
         const amount:number = total.value * (this.percent / 100.0 );
