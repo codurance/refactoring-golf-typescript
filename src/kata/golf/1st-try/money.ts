@@ -23,4 +23,12 @@ export class Money {
         }
         return new Money(this.value - other.value, other.currency);
     }
+
+    static money(value: number, currency: string): Money {
+        return new Money(value, currency);
+    }
+}
+
+export function money(value: number, currency: string): Money {
+    return Money.money(value, currency);
 }

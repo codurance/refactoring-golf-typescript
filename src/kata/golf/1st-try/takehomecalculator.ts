@@ -1,4 +1,4 @@
-import { Money } from "./money";
+import { money, Money } from "./money";
 
 export class Takehomecalculator {
     private percent: number
@@ -16,7 +16,7 @@ export class Takehomecalculator {
         }
 
         const amount:number = total.value * (this.percent / 100.0 );
-        const tax: Money = new Money(Math.trunc(amount), first.currency);
+        const tax: Money = money(Math.trunc(amount), first.currency);
 
         return total.minus(tax)
     }
