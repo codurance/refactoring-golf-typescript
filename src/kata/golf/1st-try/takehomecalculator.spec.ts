@@ -1,4 +1,5 @@
-import {Money, Takehomecalculator} from "./takehomecalculator";
+import {Takehomecalculator} from "./takehomecalculator";
+import { Money } from "./money";
 
 describe('TakeHomeCalculator', () => {
     it("can calculate tax", () => {
