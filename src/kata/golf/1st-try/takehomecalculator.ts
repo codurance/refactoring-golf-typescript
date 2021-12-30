@@ -1,10 +1,11 @@
 import { money, Money } from "./money";
+import { TaxRate } from "./TaxRate";
 
 export class Takehomecalculator {
-    private percent: number
+    private taxRate: TaxRate
 
-    constructor(percent: number) {
-        this.percent = percent;
+    constructor(taxRate: TaxRate) {
+        this.taxRate = taxRate;
     }
 
     netAmount(first: Money, ...rest : Money[] ): Money {
@@ -15,10 +16,8 @@ export class Takehomecalculator {
             total = total.plus(next)
         }
 
-        const amount:number = total.value * (this.percent / 100.0 );
-        const tax: Money = money(Math.trunc(amount), first.currency);
+        const tax: Money = this.taxRate.apply(total)
 
         return total.minus(tax)
     }
-
 }
