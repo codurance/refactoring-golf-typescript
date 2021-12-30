@@ -1,4 +1,4 @@
-import { money, Money } from "./money";
+import { Money } from "./money";
 import { TaxRate } from "./TaxRate";
 
 export class Takehomecalculator {
@@ -9,12 +9,7 @@ export class Takehomecalculator {
     }
 
     netAmount(first: Money, ...rest : Money[] ): Money {
-        const monies: Array<Money> = Array.from(rest);
-        let total: Money = first
-
-        for (const next of monies) {
-            total = total.plus(next)
-        }
+        const total: Money = rest.reduce((previousValue, currentValue) => previousValue.plus(currentValue), first)
 
         const tax: Money = this.taxRate.apply(total)
 
